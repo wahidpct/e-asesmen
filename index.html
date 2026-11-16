@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lembar Evaluasi — E-Asesmen Mandiri</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- HALAMAN LOGIN -->
+    <section id="loginPage" class="card">
+      <h1>📝 Lembar Evaluasi</h1>
+      <p class="subtitle" id="infoSesi">Memuat informasi sesi...</p>
+      <form id="loginForm">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" id="nama" placeholder="Contoh: Budi Santoso" required autocomplete="off" />
+        <label for="kelas">Kelas</label>
+        <input type="text" id="kelas" placeholder="Contoh: XI IPA 1" required autocomplete="off" />
+        <button type="submit" class="btn-primary" id="mulaiBtn" disabled>
+          ⏳ Memuat soal...
+        </button>
+      </form>
+      <p id="loginMsg" class="msg"></p>
+    </section>
+
+    <!-- HALAMAN SOAL -->
+    <section id="quizPage" class="card hidden">
+      <div class="header-quiz">
+        <div>
+          <h2 id="pesertaInfo"></h2>
+          <p class="subtitle">Waktu tersisa: <span id="timer">--:--</span></p>
+        </div>
+        <div class="progress-box">
+          <span id="progressText">1 / 10</span>
+        </div>
+      </div>
+      <div id="questionContainer"></div>
+      <div class="nav-buttons">
+        <button id="prevBtn" class="btn-secondary" disabled>← Sebelumnya</button>
+        <button id="nextBtn" class="btn-primary">Selanjutnya →</button>
+        <button id="submitBtn" class="btn-success hidden">Selesai &amp; Kirim</button>
+      </div>
+    </section>
+
+    <!-- HALAMAN HASIL -->
+    <section id="resultPage" class="card hidden">
+      <h1>✅ Evaluasi Selesai</h1>
+      <div class="result-box">
+        <p>Nama: <strong id="resNama"></strong></p>
+        <p>Kelas: <strong id="resKelas"></strong></p>
+        <p>Total Soal: <strong id="resTotal"></strong></p>
+      </div>
+      <p class="msg success">Terima kasih telah mengerjakan evaluasi.</p>
+    </section>
+  </div>
+
+  <!-- OVERLAY ANTI-CHEAT -->
+  <div id="warningOverlay" class="warning-overlay hidden">
+    <div class="warning-box">
+      <h2>⚠️ Peringatan</h2>
+      <p id="warningText"></p>
+      <button id="warningOk" class="btn-primary">Saya Mengerti</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span>©noer_w@smkn3pct</span>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

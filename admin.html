@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — E-Asesmen Mandiri</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="container admin-container">
+
+    <!-- TAB NAVIGASI -->
+    <div class="admin-tabs">
+      <button class="tab-btn active" data-tab="buatSesi">⚙️ Buat Sesi</button>
+      <button class="tab-btn" data-tab="tambahSoal">➕ Tambah Soal</button>
+    </div>
+
+    <!-- ============ TAB 1: BUAT SESI UJIAN ============ -->
+    <section class="card" id="buatSesiPage">
+      <h1>⚙️ Buat Sesi Ujian</h1>
+      <p class="subtitle">Pilih soal, atur durasi, dan generate link peserta</p>
+
+      <label>Nama Sesi</label>
+      <input type="text" id="namaSesi" placeholder="Contoh: UTS Matematika Kelas XI" />
+
+      <label>Durasi (menit)</label>
+      <div class="durasi-group">
+        <label class="durasi-option"><input type="radio" name="durasi" value="60" checked /><span>60</span></label>
+        <label class="durasi-option"><input type="radio" name="durasi" value="90" /><span>90</span></label>
+        <label class="durasi-option"><input type="radio" name="durasi" value="120" /><span>120</span></label>
+      </div>
+
+      <label>Pilih Soal</label>
+      <div class="soal-toolbar">
+        <button type="button" id="selectAllBtn" class="btn-mini">Pilih Semua</button>
+        <button type="button" id="selectNoneBtn" class="btn-mini">Kosongkan</button>
+        <span id="selectedCount" class="badge">0 dipilih</span>
+      </div>
+
+      <div class="filter-row">
+        <select id="filterTipe">
+          <option value="all">Semua Tipe</option>
+          <option value="pg">Pilihan Ganda</option>
+          <option value="isian">Jawaban Singkat</option>
+        </select>
+        <input type="text" id="searchSoal" placeholder="Cari soal..." />
+      </div>
+
+      <div id="soalList" class="soal-list">
+        <p class="loading">⏳ Memuat soal...</p>
+      </div>
+
+      <div class="opsi-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="acakSoal" checked /> Acak urutan soal
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="acakOpsi" checked /> Acak opsi jawaban
+        </label>
+      </div>
+
+      <button id="buatSesiBtn" class="btn-primary">🚀 Generate Link Ujian</button>
+
+      <div id="hasilSesi" class="hasil-sesi hidden">
+        <h3>✅ Sesi Berhasil Dibuat</h3>
+        <p>Token: <strong id="outToken"></strong></p>
+        <p>Link peserta:</p>
+        <div class="link-box">
+          <input type="text" id="outLink" readonly />
+          <button id="copyLinkBtn" class="btn-mini">Copy</button>
+        </div>
+        <button id="lihatHasilBtn" class="btn-secondary" style="width:100%;margin-top:12px;">
+          📊 Lihat Hasil Peserta
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ TAB 2: TAMBAH SOAL ============ -->
+    <section class="card hidden" id="tambahSoalPage">
+      <h1>➕ Tambah Soal Baru</h1>
+      <p class="subtitle">Soal akan langsung tersimpan ke Google Sheets</p>
+
+      <label>Tipe Soal</label>
+      <select id="newTipe" class="input-full">
+        <option value="pg">Pilihan Ganda</option>
+        <option value="isian">Jawaban Singkat</option>
+      </select>
+
+      <label>Pertanyaan</label>
+      <textarea id="newSoal" rows="3" placeholder="Tulis pertanyaan..." class="input-full"></textarea>
+
+      <label>URL Gambar (opsional)</label>
+      <input type="text" id="newGambar"
+             placeholder="https://... atau link Google Drive"
+             class="input-full" />
+      <p class="hint">
+        💡 <strong>Cara ambil link Google Drive:</strong> Upload gambar ke Drive →
+        klik kanan file → <em>Get link</em> → ubah ke
+        <strong>"Anyone with the link"</strong> → Copy → paste di sini.
+        <a href="https://drive.google.com" target="_blank">Buka Google Drive ↗</a>
+      </p>
+      <div id="previewGambar"></div>
+
+      <div id="pgFields">
+        <label>Pilihan Jawaban (satu per baris)</label>
+        <textarea id="newPilihan" rows="4"
+                  placeholder="Opsi A&#10;Opsi B&#10;Opsi C&#10;Opsi D"
+                  class="input-full"></textarea>
+      </div>
+
+      <label>Kunci Jawaban</label>
+      <input type="text" id="newJawaban" placeholder="Contoh: Jakarta" class="input-full" />
+
+      <button id="simpanSoalBtn" class="btn-primary">💾 Simpan Soal</button>
+      <p id="simpanSoalMsg" class="msg"></p>
+    </section>
+
+    <!-- ============ TAB 3: LIHAT HASIL ============ -->
+    <section class="card hidden" id="hasilPage">
+      <h1>📊 Hasil Peserta</h1>
+      <p class="subtitle" id="hasilSubtitle"></p>
+      <div id="hasilTable"></div>
+      <button id="kembaliBtn" class="btn-secondary" style="width:100%;margin-top:16px;">
+        ← Kembali
+      </button>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <span>©noer_w@smkn3pct</span>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

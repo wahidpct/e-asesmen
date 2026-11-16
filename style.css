@@ -1,0 +1,188 @@
+/* ============================================
+   RESET & BASE
+   ============================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px 60px;
+  position: relative;
+
+  /* Anti-cheat: matikan seleksi teks */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+input, textarea { user-select: text; -webkit-user-select: text; }
+
+.container { width: 100%; max-width: 720px; }
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+.hidden { display: none !important; }
+
+h1 { color: #333; margin-bottom: 8px; }
+h2 { color: #444; font-size: 1.1rem; }
+.subtitle { color: #777; margin-bottom: 20px; font-size: 0.9rem; }
+
+/* ============================================
+   FORM
+   ============================================ */
+label {
+  display: block; margin: 14px 0 6px;
+  color: #444; font-weight: 600; font-size: 0.9rem;
+}
+input[type="text"] {
+  width: 100%; padding: 12px;
+  border: 1.5px solid #ddd; border-radius: 8px;
+  font-size: 1rem; transition: border 0.2s;
+}
+input[type="text"]:focus { border-color: #667eea; outline: none; }
+
+/* ============================================
+   TOMBOL
+   ============================================ */
+button {
+  cursor: pointer; border: none; border-radius: 8px;
+  padding: 12px 20px; font-size: 1rem; font-weight: 600;
+  transition: transform 0.1s, opacity 0.2s;
+}
+button:hover:not(:disabled) { transform: translateY(-1px); opacity: 0.92; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary   { background: #667eea; color: #fff; width: 100%; margin-top: 20px; }
+.btn-secondary { background: #e5e7eb; color: #333; }
+.btn-success   { background: #10b981; color: #fff; }
+
+/* ============================================
+   HEADER QUIZ
+   ============================================ */
+.header-quiz {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 14px; margin-bottom: 20px;
+}
+.progress-box {
+  background: #667eea; color: #fff;
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+}
+
+/* ============================================
+   SOAL
+   ============================================ */
+.question { margin-bottom: 20px; }
+.question-text {
+  font-size: 1.05rem; color: #222;
+  margin-bottom: 16px; line-height: 1.5;
+}
+
+/* GAMBAR SOAL */
+.question-image {
+  margin: 12px 0 18px;
+  text-align: center;
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+}
+.question-image img {
+  max-width: 100%; max-height: 360px;
+  border-radius: 6px; object-fit: contain;
+  display: block; margin: 0 auto;
+  pointer-events: none; user-select: none;
+}
+.img-error {
+  color: #dc2626; font-size: 0.9rem;
+  text-align: center; padding: 12px;
+}
+
+.option {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border: 1.5px solid #e5e7eb;
+  border-radius: 8px; margin-bottom: 10px;
+  cursor: pointer; transition: all 0.2s;
+  font-weight: normal; margin-left: 0; margin-right: 0;
+}
+.option:hover { border-color: #667eea; background: #f5f7ff; }
+.option input { accent-color: #667eea; }
+.option.selected { border-color: #667eea; background: #f0f4ff; }
+
+.short-answer {
+  width: 100%; padding: 12px;
+  border: 1.5px solid #e5e7eb; border-radius: 8px;
+  font-size: 1rem; transition: border 0.2s;
+}
+.short-answer:focus { border-color: #667eea; outline: none; }
+
+/* ============================================
+   NAVIGASI
+   ============================================ */
+.nav-buttons {
+  display: flex; justify-content: space-between;
+  gap: 10px; margin-top: 24px;
+}
+.nav-buttons button { flex: 1; }
+
+/* ============================================
+   HASIL
+   ============================================ */
+.result-box {
+  background: #f9fafb; border-radius: 12px;
+  padding: 20px; margin: 20px 0;
+}
+.result-box p { margin: 8px 0; color: #444; }
+.msg { margin-top: 12px; font-size: 0.9rem; color: #e11d48; }
+.msg.success { color: #10b981; }
+
+/* ============================================
+   OVERLAY ANTI-CHEAT
+   ============================================ */
+.warning-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999; padding: 20px; animation: fadeIn 0.2s ease;
+}
+.warning-box {
+  background: #fff; padding: 28px 24px; border-radius: 14px;
+  max-width: 420px; text-align: center;
+  border-top: 5px solid #ef4444;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.warning-box h2 { color: #dc2626; margin-bottom: 12px; }
+.warning-box p { color: #444; margin-bottom: 20px; line-height: 1.5; }
+.warning-box button { width: 100%; margin-top: 0; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* TIMER WARNING */
+.timer-warning { color: #dc2626 !important; animation: pulse 1s infinite; font-weight: 700; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  text-align: center;
+  padding: 10px;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  z-index: 100;
+  pointer-events: none;
+}
