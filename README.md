@@ -2,7 +2,7 @@
 
 **Sistem Evaluasi Berbasis Web dengan Google Sheets sebagai Backend**
 
-> noer_w@smkn3pct — SMK Negeri 3 Pacitan
+> noer_wahid@smkn3pct — SMK Negeri 3 Pacitan
 
 ---
 
