@@ -5,7 +5,7 @@
 const CONFIG = {
   // ⚠️ GANTI dengan URL Web App Google Apps Script Anda
   // Format: 'https://script.google.com/macros/s/XXXXX/exec'
-  API_URL: 'https://script.google.com/macros/s/xxx/exec',
+  API_URL: 'https://script.google.com/macros/s/AKfycbw2Vc39CLwGEC5jMgIhPdlr_8dx8vem3LgnnD3kDfURc4CAeGMIMGNM43WWqRrPf8k6/exec',
 };
 
 // ============================================================
