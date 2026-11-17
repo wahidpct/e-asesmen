@@ -2,7 +2,7 @@
 
 **Sistem Evaluasi Berbasis Web dengan Google Sheets sebagai Backend**
 
-> ©noer_w@smkn3pct — SMK Negeri 3 Pacitan
+> noer_w@smkn3pct — SMK Negeri 3 Pacitan
 
 ---
 
@@ -435,9 +435,9 @@ A: Sistem tidak bisa diakses sementara. Sangat jarang terjadi. Untuk antisipasi,
 
 **E-Asesmen Mandiri v2.0**
 
-Dikembangkan sebagai karya inovasi pembelajaran untuk memajukan pendidikan Indonesia.
+Dikembangkan untuk memajukan pendidikan Indonesia.
 
-> ©noer_w@smkn3pct — SMK Negeri 3 Pacitan
+> Noer Wahid — SMK Negeri 3 Pacitan
 
 **Teknologi yang digunakan:**
 - Google Sheets (basis data)
